@@ -1,0 +1,150 @@
+:root {
+  /* Definición de variables */
+  --color-fondo: #1c3587;
+  --color-pantalla: rgb(53, 50, 50);
+  --color-calculadora: #2b99a5;
+  --color-teclas: white;
+}
+
+/* Estilos generales */
+* {
+  box-sizing: border-box;
+  font-size: 25px;
+  font-weight: bold;
+  color: white;
+}
+
+body {
+  background-color: var(--color-fondo);
+  display: flex;
+  height: 95vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  background-color: var(--color-calculadora);
+  border: none;
+  cursor: pointer;
+}
+
+/* Estilos del cuerpo de la calculadora */
+main {
+  background-color: var(--color-calculadora);
+  width: 18%;
+  min-width: 290px;
+  border-radius: 23px;
+  padding-top: 22px;
+  padding-bottom: 22px;
+  box-shadow: 13px 5px 5px 0.5px rgba(0, 0, 0, 0.306);
+}
+
+hr {
+  width: 60%;
+}
+
+/* Estilo de la pantalla de la calculadora */
+.pantalla {
+  background-color: var(--color-pantalla);
+  width: calc(100% - 35px);
+  /* el 100 del contenedor - padding del main */
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 15px;
+  box-shadow: 0px 0px 1px 5px rgba(0, 0, 0, 0.2);
+  aspect-ratio: 227/90;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border: solid rgba(0, 0, 0, 0.163);
+}
+
+/* Estilo de entrada */
+input {
+  width: 90%;
+  background-color: var(--color-pantalla);
+  border-style: none;
+  text-align: end;
+  border-radius: 20px;
+  outline: none;
+  font-size: 1.1em;
+  margin-inline: auto;
+  margin-top: 10px;
+}
+
+.pantalla input:focus {
+  background-color: var(--color-pantalla);
+  /* Utiliza el color deseado para el fondo */
+  outline: none;
+  /* Elimina el contorno predeterminado */
+}
+
+/* Estilo de salida del resultado */
+.output {
+  width: 90%;
+  text-align: end;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 10px;
+  margin-bottom: 10px;
+  min-height: 35px;
+  margin-inline: auto;
+
+}
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-size: 35px;
+  height: 40px;
+}
+
+/* Estilo de la caja que contiene todas las teclas */
+.teclas {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Estilo de las teclas */
+.tecla {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 20%;
+  aspect-ratio: 1;
+  padding: 4px;
+  margin: 5px;
+  border-radius: 50%;
+  box-shadow: 2px 2px 4px 0.4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo de las teclas alargadas */
+.tecla-alargada {
+  flex-basis: calc(40% + 10px);
+  /* le sumamos el margin que tendría si hubiesen dos teclas */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  padding: 4px;
+  margin: 5px;
+  border-radius: 40px;
+  box-shadow: 2px 2px 4px 0.4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para pantallas menores a 1440px */
+@media (max-width:1439px) {
+
+  .input {
+    font-size: 19px;
+  }
+
+  p {
+    font-size: 25px;
+  }
+
+}

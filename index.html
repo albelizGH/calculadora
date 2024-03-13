@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Calculadora</title>
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.0/math.js"></script>
+  <main>
+    <hr>
+    <div class="pantalla">
+      <input id="input" type="text" class="input" autocomplete="off">
+      <p class="output" id="output"></p>
+    </div>
+    <hr>
+    <div class="teclas">
+      <button onclick="borrarPantalla()" class="tecla-alargada">C</button>
+      <button onclick="borrarCaracter()" class="tecla">⬅</button>
+      <button onclick="escribirBotonEnPantalla(event)" class="tecla">%</button>
+      <button onclick="escribirBotonEnPantalla(event)" class="tecla">7</button>
+      <button onclick="escribirBotonEnPantalla(event)" class="tecla">8</button>
+      <button onclick="escribirBotonEnPantalla(event)" class="tecla">9</button>
+      <button onclick="escribirBotonEnPantalla(event)" class="tecla">x</button>
+      <button onclick="escribirBotonEnPantalla(event)" class="tecla">4</button>
+      <button onclick="escribirBotonEnPantalla(event)" class="tecla">5</button>
+      <button onclick="escribirBotonEnPantalla(event)" class="tecla">6</button>
+      <button onclick="escribirBotonEnPantalla(event)" class="tecla">-</button>
+      <button onclick="escribirBotonEnPantalla(event)" class="tecla">1</button>
+      <button onclick="escribirBotonEnPantalla(event)" class="tecla">2</button>
+      <button onclick="escribirBotonEnPantalla(event)" class="tecla">3</button>
+      <button onclick="escribirBotonEnPantalla(event)" class="tecla"">+</button>
+      <button onclick="escribirBotonEnPantalla(event)" class="tecla-alargada">0</button>
+      <button onclick="escribirBotonEnPantalla(event)" class="tecla">.</button>
+      <button onclick="calcularResultado()" class="tecla">=</button>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
