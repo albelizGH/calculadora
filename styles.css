@@ -90,7 +90,11 @@ input {
   margin-bottom: 10px;
   min-height: 35px;
   margin-inline: auto;
+  overflow-x: scroll;
+}
 
+.output::-webkit-scrollbar {
+  display: none;
 }
 
 p {

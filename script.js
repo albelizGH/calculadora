@@ -1,43 +1,73 @@
-const input = document.getElementById("input");
-const output = document.getElementById("output");
+const pantallaIngreso = document.getElementById("input");
+const pantallaSalida = document.getElementById("output");
+const teclas = document.querySelectorAll(".tecla");
+const teclasAlargadas = document.querySelectorAll(".tecla-alargada");
 
-function calcularResultado() {
-	let ingresoUsuario = input.value;
-	try {
-		let resultado = math.evaluate(ingresoUsuario);
-		resultado = parseFloat(resultado.toFixed(2));
-		mostrarResultado(resultado);
-	} catch (error) {
-		mostrarResultado("Error de sintaxis");
-	}
-}
+teclas.forEach((boton) => {
+	boton.addEventListener("click", () => {
+		valorTecla = boton.textContent;
 
-function mostrarResultado(resultadoAMostrar) {
-	console.log(resultadoAMostrar);
-	output.innerText = resultadoAMostrar;
-}
+		if (pantallaSalida != "") {
+			borrarPantallaSalida();
+		}
+		if (valorTecla == "⬅") {
+			borrarUltimoCaracter();
+			return;
+		}
+		if (valorTecla == "=") {
+			calcular();
+			return;
+		}
+		pantallaIngreso.value += valorTecla;
+	});
+});
+
+teclasAlargadas.forEach((boton) => {
+	boton.addEventListener("click", () => {
+		valorTecla = boton.textContent;
+		if (valorTecla == "C") {
+			borrarPantalla();
+			pantallaSalida.textContent = 0;
+			return;
+		}
+		pantallaIngreso.value += valorTecla;
+	});
+});
 
 function borrarPantalla() {
-	input.value = "";
-	output.innerText = "";
+	pantallaIngreso.value = "";
+	pantallaSalida.textContent = "";
 }
 
-function escribirBotonEnPantalla(event) {
-	const boton = event.target;
-	let valorBoton = boton.innerText;
-
-	if (valorBoton === "x") {
-		valorBoton = "*";
-	}
-
-	if (valorBoton === "%") {
-		valorBoton = "/";
-	}
-
-	input.value += valorBoton; // Agregar el valor del botón al campo de entrada
+function borrarPantallaSalida() {
+	pantallaSalida.textContent = "";
 }
 
-function borrarCaracter() {
-	let numeroNuevo = input.value.slice(0, -1);
-	input.value = numeroNuevo;
+function borrarUltimoCaracter() {
+	let valor = pantallaIngreso.value.slice(0, pantallaIngreso.value.length - 1);
+	pantallaIngreso.value = valor;
+}
+
+function calcular() {
+	console.log(pantallaIngreso.value);
+	let contenidoPantalla = pantallaIngreso.value;
+	contenidoPantalla = contenidoPantalla.replaceAll("x", "*");
+	contenidoPantalla = contenidoPantalla.replaceAll("÷", "/");
+
+	let resultado = eval(contenidoPantalla);
+
+	if (Number.isInteger(resultado)) {
+		//Si la division es entera imprimimos asi
+		pantallaSalida.textContent = resultado;
+	} else {
+		resultado = resultado.toFixed(6); //Usamos 6 cifras
+
+		let resultadoTexto = toString(resultado);
+		let indicePunto = resultadoTexto.indexOf(".");
+		for (let i = indicePunto; i < resultado.length; i++) {
+			resultadoTexto = resultado.replaceAll("0", ""); //Quitamos los 0 innecesarios luego del .
+		}
+		resultado = parseFloat(resultadoTexto);
+		pantallaSalida.textContent = resultado;
+	}
 }
